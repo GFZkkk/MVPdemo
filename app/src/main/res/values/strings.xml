@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MVP_demo</string>
+    <string name="error_network">网络异常</string>
+
+</resources>
