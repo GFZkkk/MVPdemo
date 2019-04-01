@@ -1,15 +1,13 @@
 package com.example.gaofengze.demo.model.Impl;
 
-import com.example.gaofengze.demo.base.BaseObserver;
 import com.example.gaofengze.demo.callBack.CallBack;
-import com.example.gaofengze.demo.data.NetWorkCode;
-import com.example.gaofengze.demo.model.ICodeLogin;
-import com.example.gaofengze.demo.model.IPwdLogin;
+import com.example.gaofengze.demo.data.NetWorkData;
+import com.example.gaofengze.demo.diy.retrofit.BaseObserver;
+import com.example.gaofengze.demo.diy.retrofit.RxUtil;
 import com.example.gaofengze.demo.model.bean.Login;
-import com.example.gaofengze.demo.model.bean.ResultBean;
+import com.example.gaofengze.demo.base.bean.ResultBean;
 import com.example.gaofengze.demo.network.NetWork;
-import com.example.gaofengze.demo.tools.RxUtil;
-import com.example.gaofengze.demo.tools.UserUtil;
+import com.example.gaofengze.demo.util.tools.UserUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,9 +15,8 @@ import java.util.Map;
 /**
  * Created by gaofengze on 2019/a1/7
  */
-public class LoginImpl implements ICodeLogin, IPwdLogin {
+public class LoginImpl {
 
-    @Override
     public void codeLogin(String tel, String code, final CallBack callBack) {
         Map<String,String> map = new HashMap<>();
         map.put("code",code);
@@ -30,17 +27,16 @@ public class LoginImpl implements ICodeLogin, IPwdLogin {
                 .subscribe(new BaseObserver<ResultBean<Login>>(callBack) {
                     @Override
                     public void onNext(ResultBean<Login> loginResultBean) {
-                        if(NetWorkCode.success.equals(loginResultBean.getCode())){
+                        if(NetWorkData.success.equals(loginResultBean.getCode())){
                             UserUtil.saveUserInfo(loginResultBean.getData());
                             callBack.success();
                         }else{
-                            callBack.error(loginResultBean.getMsg());
+                            callBack.error(loginResultBean.getCode(),loginResultBean.getMsg());
                         }
                     }
                 });
     }
 
-    @Override
     public void pwdLogin(String tel, final String pwd, final CallBack callBack) {
         Map<String,String> map = new HashMap<>();
         map.put("userPhone",tel);
@@ -51,11 +47,11 @@ public class LoginImpl implements ICodeLogin, IPwdLogin {
         .subscribe(new BaseObserver<ResultBean<Login>>(callBack) {
             @Override
             public void onNext(ResultBean<Login> loginResultBean) {
-                if(NetWorkCode.success.equals(loginResultBean.getCode())){
+                if(NetWorkData.success.equals(loginResultBean.getCode())){
                     UserUtil.saveUserInfo(loginResultBean.getData(),pwd);
                     callBack.success();
                 }else{
-                    callBack.error(loginResultBean.getMsg());
+                    callBack.error(loginResultBean.getCode(),loginResultBean.getMsg());
                 }
             }
         });

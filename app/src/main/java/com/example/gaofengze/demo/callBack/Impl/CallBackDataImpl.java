@@ -1,21 +1,23 @@
 package com.example.gaofengze.demo.callBack.Impl;
 
-import com.example.gaofengze.demo.callBack.CallBackData;
-import com.example.gaofengze.demo.view.IVoidView;
+
+import com.example.gaofengze.demo.base.viewIF.IDataView;
 
 /**
  * Created by gaofengze on 2018/12/3
  */
-public abstract class CallBackDataImpl<T,V extends IVoidView> extends BaseCallBackImpl<V> implements CallBackData<T> {
-     private V v;
+public class CallBackDataImpl<T> extends CallBackDataBaseImpl<T, IDataView<T>>{
 
-    public CallBackDataImpl(V v) {
-        super(v);
-        this.v = v;
+    public CallBackDataImpl(IDataView<T> tiDataView) {
+        super(tiDataView);
+    }
+
+    public CallBackDataImpl(IDataView<T> tiDataView, boolean showLoading) {
+        super(tiDataView, showLoading);
     }
 
     @Override
-    public void error(String err) {
-        v.error(err);
+    public void success(T data) {
+        v.showData(data);
     }
 }

@@ -1,6 +1,6 @@
 package com.example.gaofengze.demo.network;
 
-import com.example.gaofengze.demo.data.Contanst;
+import com.example.gaofengze.demo.data.NetWorkData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -22,7 +22,18 @@ public class NetWork {
 
     private static LoginApi loginApi;
     private static VCodeApi vCodeApi;
-    private static UserApi userApi;
+
+    /**
+     * 默认注册
+     */
+    private static Retrofit getRetrofit(){
+        return new Retrofit.Builder()
+                .client(okHttpClient)
+                .baseUrl(NetWorkData.baseUrl)
+                .addConverterFactory(gsonConverterFactory)
+                .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                .build();
+    }
 
     private static Retrofit getRetrofit(String url){
         return new Retrofit.Builder()
@@ -38,22 +49,19 @@ public class NetWork {
      */
     public static LoginApi getLoginApi(){
         if(loginApi == null){
-            loginApi = getRetrofit(Contanst.baseUrl).create(LoginApi.class);
+            loginApi = getRetrofit().create(LoginApi.class);
         }
         return loginApi;
     }
 
+    /**
+     * 短信
+     */
     public static VCodeApi getVCodeApi(){
         if(vCodeApi == null){
-            vCodeApi = getRetrofit(Contanst.baseUrl).create(VCodeApi.class);
+            vCodeApi = getRetrofit().create(VCodeApi.class);
         }
         return vCodeApi;
-    }
-    public static UserApi getUserApi(){
-        if(userApi == null){
-            userApi = getRetrofit(Contanst.baseUrl).create(UserApi.class);
-        }
-        return userApi;
     }
 
 }

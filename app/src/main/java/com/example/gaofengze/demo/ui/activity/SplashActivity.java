@@ -4,20 +4,20 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import com.example.gaofengze.demo.tools.ToastUtils;
-import com.example.gaofengze.demo.tools.UIUtils;
+import com.example.gaofengze.demo.util.tools.ToastUtils;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.gaofengze.demo.tools.UIUtils.getHandler;
+import static com.example.gaofengze.demo.data.App.getmHandlers;
+
 
 public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UIUtils.getHandler().post(new Runnable() {
+        getmHandlers().post(new Runnable() {
             @Override
             public void run() {
                 selectActivity();
@@ -48,7 +48,7 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
     private void selectActivity(){
-        startActivity(new Intent(this,TestActivity.class));
+        startActivity(new Intent(this, TestActivity.class));
         /*if(SPUtil.getBoolean("login",false)){
             startActivity(new Intent(this,MainActivity.class));
         }else{
@@ -59,7 +59,7 @@ public class SplashActivity extends AppCompatActivity {
     }
     @Override
     protected void onDestroy() {
-        getHandler().removeCallbacksAndMessages(null);
+        getmHandlers().removeCallbacksAndMessages(null);
         super.onDestroy();
     }
 }

@@ -5,7 +5,7 @@ package com.example.gaofengze.demo.callBack;
  */
 public interface BaseCallBack {
     void onSubscribe();
-    void error(String err);
+    void error(String code, String err);
     void onFailure(String code);
     void onComplete();
 }

@@ -1,7 +1,7 @@
 package com.example.gaofengze.demo.network;
 
+import com.example.gaofengze.demo.base.bean.ResultBean;
 import com.example.gaofengze.demo.model.bean.Login;
-import com.example.gaofengze.demo.model.bean.ResultBean;
 
 import java.util.Map;
 
