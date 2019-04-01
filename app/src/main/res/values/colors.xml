@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="login_background">#F5F1F0</color>
 
-    <color name="blue">#80b5FF</color>
-    <color name="blue_1">#4894ff</color>
-    <color name="white">#FFFFFF</color>
-    <color name="shadow">#3f24385A</color>
     <!--<color name="shadow_1">#2124385A</color>
     <color name="shadow_2">#oc24385A</color>-->
-    <color name="black_overlay">#66000000</color>
 
 
 </resources>
