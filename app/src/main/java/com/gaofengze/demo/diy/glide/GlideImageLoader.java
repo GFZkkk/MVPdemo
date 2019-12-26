@@ -26,12 +26,12 @@ public class GlideImageLoader  {
     }
 
 
-    public static void displayRoundRect(ImageView imageView, String imageUrl){
+/*    public static void displayRoundRect(ImageView imageView, String imageUrl){
         GlideApp.with(imageView.getContext())
                 .load(imageUrl)
 //                .crossFade(500)
 //                .change_success(R.drawable.ic_avatar_default)
                 .transform(new MultiTransformation<Bitmap>(new CenterCrop(),new GlideRoundRectTransform(8f)))
                 .into(imageView);
-    }
+    }*/
 }

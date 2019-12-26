@@ -255,7 +255,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Ba
     /**
      * 清空数据
      */
-    protected void clear(){
+    public void clear(){
         list.clear();
     }
 
