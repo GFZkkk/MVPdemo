@@ -42,7 +42,7 @@ public abstract class BaseMVPActivity<V extends IBaseView,P extends BasePresente
      */
     @Override
     protected void onDestroy() {
-        KProgressHUDUtil.loadFinish();
+        KProgressHUDUtil.getInstance().loadFinish();
         presenter.detachView();
         super.onDestroy();
 
@@ -54,7 +54,7 @@ public abstract class BaseMVPActivity<V extends IBaseView,P extends BasePresente
      */
     @Override
     public void showProgress() {
-        KProgressHUDUtil.loadWait(this);
+        KProgressHUDUtil.getInstance().loadWait(this);
     }
 
     /**
@@ -62,7 +62,7 @@ public abstract class BaseMVPActivity<V extends IBaseView,P extends BasePresente
      */
     @Override
     public void hideProgress() {
-        KProgressHUDUtil.loadFinish();
+        KProgressHUDUtil.getInstance().loadFinish();
     }
 
     /**

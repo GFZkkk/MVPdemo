@@ -5,14 +5,25 @@ import android.content.Context;
 import com.gaofengze.demo.data.App;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
-
 /**
  * Created by gaofengze on 2018/11/14
  */
 public class KProgressHUDUtil {
-    private static KProgressHUD hud;
+    private KProgressHUD hud;
 
-    public static void loadWait(Context context){
+    private KProgressHUDUtil(){
+    }
+
+    private static class LazyHolder{
+
+        private static final KProgressHUDUtil INSTANCE = new KProgressHUDUtil();
+    }
+
+    public static KProgressHUDUtil getInstance(){
+        return LazyHolder.INSTANCE;
+    }
+
+    public void loadWait(Context context){
         if(App.activityList != null){
             loadFinish();
             hud = KProgressHUD.create(context)
@@ -22,7 +33,7 @@ public class KProgressHUDUtil {
         }
     }
 
-    public static void loadFinish(){
+    public void loadFinish(){
         if (hud != null){
             hud.dismiss();
             hud = null;

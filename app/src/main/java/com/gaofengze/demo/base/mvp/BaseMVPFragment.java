@@ -31,10 +31,10 @@ public abstract class BaseMVPFragment<V extends IBaseView,T extends BasePresente
     public void error(String code, String err) {
         if(NetWorkData.logout.equals(code)){
             DeBugUtil.error("fragment 登出");
-           Activity activity = getActivity();
-           if(activity instanceof BaseActivity){
-               ((BaseActivity) activity).logout();
-           }
+            Activity activity = getActivity();
+            if(activity instanceof BaseActivity){
+                ((BaseActivity) activity).logout();
+            }
         }
     }
 
